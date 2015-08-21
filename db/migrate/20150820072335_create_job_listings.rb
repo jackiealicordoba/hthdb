@@ -3,6 +3,7 @@ class CreateJobListings < ActiveRecord::Migration
     create_table :job_listings do |t|
       t.integer :company_id
       t.integer :recruiter_id
+      t.string :company_name
       t.string :job_title
       t.string :job_location
       t.string :job_skills
