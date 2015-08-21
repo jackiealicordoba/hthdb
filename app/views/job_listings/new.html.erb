@@ -1,0 +1,12 @@
+<%= form_for @job_listing do |post_job| %>
+
+<img src = http://www.hackthehood.org/uploads/2/0/6/0/20604180/1411581837.png />
+
+  <%= post_job.text_field :company_name, placeholder: "Company Name" %>
+  <%= post_job.text_field :job_title, placeholder: "Job Title" %>
+  <%= post_job.text_field :job_location, placeholder: "Job Location"%>
+  <%= post_job.text_field :job_skills, placeholder: "Job Skills"%>
+  <%= post_job.text_field :job_deadline, placeholder: "Job Deadline"%>
+  <%= post_job.text_area :job_description, placeholder: "Job Description", size: "60x12" %>
+  <%= post_job.submit "Create" %>
+  <% end %>

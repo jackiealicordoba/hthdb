@@ -1,0 +1,2 @@
+class PostajobController < ApplicationController
+end
