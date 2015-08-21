@@ -14,7 +14,11 @@ class JobListingsController < ApplicationController
 		respond_with @job_listing
 	end
 	def job_listings_params
-		params.require(:job_listings).permit(:company_name, :job_title, :job_location, :job_skills, :job_deadline, :job_description)
+		params.require(:job_listing).permit(:company_name, :job_title, :job_location, :job_skills, :job_deadline, :job_description)
+	end
+
+	def show
+		@job_listing = JobListing.find(params.require(:id))
 	end
 end
 
