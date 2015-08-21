@@ -4,7 +4,7 @@ class CreateRecruiters < ActiveRecord::Migration
       t.integer :company_id
       t.string :recruiter_name
       t.string :recruiter_email
-      t.integer :recruiter_phone
+      t.string :recruiter_phone
 
       t.timestamps null: false
     end

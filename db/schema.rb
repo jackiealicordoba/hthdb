@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820072335) do
+ActiveRecord::Schema.define(version: 20150820183435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,15 @@ ActiveRecord::Schema.define(version: 20150820072335) do
     t.string   "password"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "phone_number"
+    t.string   "phone_number"
     t.string   "email"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "hth_grads_job_listings", id: false, force: :cascade do |t|
+    t.integer "job_listing_id", null: false
+    t.integer "hth_grad_id",    null: false
   end
 
   create_table "job_listings", force: :cascade do |t|
@@ -40,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150820072335) do
     t.integer  "recruiter_id"
     t.string   "job_title"
     t.string   "job_location"
+    t.string   "job_skills"
     t.date     "job_deadline"
     t.text     "job_description"
     t.datetime "created_at",      null: false
@@ -50,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150820072335) do
     t.integer  "company_id"
     t.string   "recruiter_name"
     t.string   "recruiter_email"
-    t.integer  "recruiter_phone"
+    t.string   "recruiter_phone"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

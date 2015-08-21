@@ -5,7 +5,6 @@ class CreateJobListings < ActiveRecord::Migration
       t.integer :recruiter_id
       t.string :job_title
       t.string :job_location
-      t.string :job_function
       t.string :job_skills
       t.date :job_deadline
       t.text :job_description
