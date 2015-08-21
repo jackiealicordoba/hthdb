@@ -1,5 +1,5 @@
 class JobListing < ActiveRecord::Base
-	has_and_belongs_to_many :HthGrad
-	belongs_to :Recruiter
-	belongs_to :Company
+	has_and_belongs_to_many :hth_grad
+	belongs_to :recruiter
+	belongs_to :company
 end
