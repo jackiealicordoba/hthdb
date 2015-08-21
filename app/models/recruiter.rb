@@ -1,4 +1,4 @@
 class Recruiter < ActiveRecord::Base
-	belongs_to :Company
-	has_many :JobListing
+	belongs_to :company
+	has_many :job_listings
 end

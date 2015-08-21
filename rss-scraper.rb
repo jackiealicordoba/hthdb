@@ -8,9 +8,13 @@ require 'date'
 #default: what string to put in db if no result
 
 def get_text_between(str, start, finish, default)
+	#company name: olark
 	puts("string to grab text from: " + str)
 	new_str = ""
 	current_char_index = str.index(start)
+	if current_char_index != nil
+		current_char_index += start.length + 1
+	end
 	if current_char_index != nil
 		while str[current_char_index] != finish
 			new_str = new_str + str[current_char_index]
@@ -101,11 +105,8 @@ def process_feed(feed)
 
 		contentString = entry.content.downcase
 
-		begin
-			job_deadline = Date.parse(get_text_between(contentString, "deadline", '<', ""))
-		rescue ArgumentError
-			job_deadline = Date.new
-		end
+		
+		job_deadline = get_text_between(contentString, "deadline", '<', "no deadline")
 
 
 		recruiter_name = get_text_between(contentString, "contact name", '<', "no contact info")
@@ -116,7 +117,6 @@ def process_feed(feed)
 		company_name = get_text_between(contentString, "company", '<', "no company listed")
 		company_website = get_text_between(contentString, "www.", '<', "no website listed")
 		company_about = get_text_between(contentString, "about the company", '<', "no company information")
-
 
 		#INSERT INTO company (company_name, company_about, company_website) VALUES (company_name, company_about, company_website);
 		company = Company.create(
@@ -134,12 +134,12 @@ def process_feed(feed)
 		)
 
 		#INSERT INTO job_listing (company_name, recruiter_id, job_title, job_location, job_deadline, job_description, job_skills) VALUES (company_name, recruiter_id, job_title, job_location, job_deadline, job_description, job_skills);
-		job_listing = JobListing.create(
+		JobListing.create(
 			company: company,
 			recruiter: recruiter,
 			job_title: job_title,
 			job_location: job_location,
-			job_deadline: Date.parse(job_deadline),
+			job_deadline: job_deadline,
 			job_description: job_description,
 			job_skills: job_skills,
 		)
